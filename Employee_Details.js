@@ -1,4 +1,3 @@
-
 const is_Present = 1;
 
 // uc1 Checking Attendance
@@ -9,18 +8,22 @@ if (Attendance == is_Present)
    let empHrs;
    const wagePerHr = 20;
    // Calculating Daily wage of the employee
-   let working_Hrs = (Math.floor(Math.random() * 10) % 3) + 1;
+   let working_Hrs = (Math.floor(Math.random() * 10) % 2) + 1;
+   function getWorkingHrs(working_Hrs)
+   {
    switch (working_Hrs)
    {
    case 1:
-    empHrs = 8;
-    break;
+    return 8;
     case 2:
-        empHrs = 4;
-        break;
+       return 4;
    }
+}
+   empHrs = getWorkingHrs(working_Hrs);
    let emp_Monthly_wage = wagePerHr * empHrs;
+   console.log("Working Hour of the Employee : " + empHrs);
    console.log("Employee's Daily wage : " + emp_Monthly_wage);
+
 }
 else
 {

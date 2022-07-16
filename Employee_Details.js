@@ -5,6 +5,7 @@ let totalEmpHrs = 0;
 const working_hourspermonth = 100;
 let total_workingdays = 0;
 let dailyWagesArr = new Array();
+let empDailyHrsAndWage = new Array();
    // Calculating Daily wage of the employee
    //creating function
    function getWorkingHrs(working_Hrs)
@@ -32,7 +33,18 @@ while (totalEmpHrs <= working_hourspermonth && total_workingdays <= working_days
    dailyWagesArr.push(dailyWage(empHrs));
    totalEmpHrs = totalEmpHrs + empHrs;
    total_workingdays++;
+    // UC10 to store day, Hours and wage in one object.
+    empDailyHrsAndWage.push({
+        day:total_workingdays,
+        dailyHrs:empHrs,
+        onedayWage:dailyWage(empHrs),
+        toString()    {
+            return "\nDay: "+ this.day +" Working Hours: "+ this.dailyHrs +" Wage: "+ this.onedayWage
+            }
+    });
 }
+console.log("Employee Details (uc10):"+ empDailyHrsAndWage);
+
 
 
 let day = 1;

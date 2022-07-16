@@ -89,10 +89,26 @@ dayWithWageDic.forEach((value, key) => {
         console.log("Day "+ key +" Wage "+ value);
 })
 
-//UC7G no. of days employee worked.
+//UC7G number of days employee worked.
 let presentDays = 0;
 dayWithWageDic.forEach((value, key) => {
     if (value != "0")
         presentDays++;
 })
 console.log("Employee worked for "+ presentDays +" Days.");
+
+//UC9- using Arrow functions
+let noWorkDaysArr = new Array();
+let fullTimeDaysArr = new Array();
+let partTimeDaysArr = new Array();
+dayWithWageDic.forEach((value, key)=>{
+    if (value == "160")
+    fullTimeDaysArr.push(key);
+    else if (value == "80")
+    partTimeDaysArr.push(key);
+    else
+        noWorkDaysArr.push(key);
+});
+console.log("No Working Days: "+ noWorkDaysArr);
+console.log("Full Working Days: "+ fullTimeDaysArr);
+console.log("Part time working Days: "+ partTimeDaysArr);

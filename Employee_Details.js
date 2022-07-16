@@ -45,8 +45,6 @@ while (totalEmpHrs <= working_hourspermonth && total_workingdays <= working_days
 }
 console.log("Employee Details (uc10):"+ empDailyHrsAndWage);
 
-
-
 let day = 1;
 let dayWithWageDic = new Map;
 dailyWagesArr.forEach(element => {
@@ -69,8 +67,6 @@ function sum(wageForOneDay)
 }
 dailyWagesArr.forEach(sum);
 console.log("Total monthly wage using foreach method: "+ wagepermonth);
-
-
 
 //UC7C - Day when full day wage of 160 is earned.
 function fullDayWage(wageForOneDay)
@@ -124,3 +120,29 @@ dayWithWageDic.forEach((value, key)=>{
 console.log("No Working Days: "+ noWorkDaysArr);
 console.log("Full Working Days: "+ fullTimeDaysArr);
 console.log("Part time working Days: "+ partTimeDaysArr);
+
+
+//UC11A - Total Hrs and Wages using Arrow function.
+let totalHrsArrow = empDailyHrsAndWage
+                    .filter(dailyHours => dailyHours.dailyHrs > 0)
+                    .reduce((totalHrsArrow, dailyHours) => totalHrsArrow += dailyHours.dailyHrs, 0);
+let totalWageArrow = empDailyHrsAndWage
+                    .filter(dailyWages => dailyWages.onedayWage > 0)
+                    .reduce((totalWageArrow, dailyWages) => totalWageArrow += dailyWages.onedayWage, 0);
+console.log("UC11 - \nTotal Hours "+ totalHrsArrow +"\nTotal Wages: "+ totalWageArrow);
+console.log("------------------------------------------------------------");
+//UC11B - Full Work day 
+console.log("UC11 B - Full Time Working Day using Arrow Function.")
+empDailyHrsAndWage.filter(fullday => fullday.dailyHrs == 8)
+                    .forEach(fullday => console.log(fullday.toString()));
+console.log("------------------------------------------------------------");
+//UC11C - Part time day
+console.log("UC11 C - Part Time working days using Arrow functions.");
+empDailyHrsAndWage.filter(partTime => partTime.dailyHrs == 4)
+                    .forEach(partTime => console.log(partTime.toString()));
+
+console.log("------------------------------------------------------------");                   
+//UC11D - No working Days 
+let noWorkDay = empDailyHrsAndWage.filter(noWork => noWork.dailyHrs == 0)
+                                    .map(noWork => noWork.day);
+console.log("UC11 D - No working days using Map functions.\n"+ noWorkDay);
